@@ -204,9 +204,11 @@ def do_train(cfg,
                 #                     loss_meter.avg, acc_meter.avg, scheduler._get_lr(epoch)[0]))
                 extra = ""
                 if hasattr(loss_fn, "_last") and isinstance(loss_fn._last, dict):
-                    d = loss_fn._last
-                    extra = ", ID:{:.3f}, TRI:{:.3f}, PA:{:.3f}(w={:.3g})".format(
-                        d.get("id", 0.0), d.get("tri", 0.0), d.get("pa", 0.0), d.get("pa_w", 0.0)
+                    # d = loss_fn._last
+                    d = loss_fn._last if hasattr(loss_fn, "_last") else {}
+                    extra = ", ID:{:.3f}, TRI:{:.3f}, PA:{:.3f}(w={:.3g}), Sim:{:.4f}, Lam:{:.3f}".format(
+                        d.get("id", 0.0), d.get("tri", 0.0), d.get("pa", 0.0), d.get("pa_w", 0.0),
+                        d.get("sim", 0.0), d.get("lam", 0.0)
                     )
                 logger.info("Epoch[{}] Iteration[{}/{}] Loss: {:.3f}, Acc: {:.3f}, Base Lr: {:.2e}{}"
                             .format(epoch, (idx + 1), len(train_loader),
