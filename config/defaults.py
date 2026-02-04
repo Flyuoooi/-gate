@@ -67,7 +67,7 @@ _C.MODEL.TEXT.TEMP = 0.07
 _C.MODEL.TEXT.ITC_W = 0.0
 
 # --- Proxy-only feature-wise keep-top + soft gate (identity-evidence preserving) ---
-_C.MODEL.TEXT.PROXY_GATE_ON = False
+_C.MODEL.TEXT.PROXY_GATE_ON = True
 _C.MODEL.TEXT.PROXY_GATE_WARMUP= 20
 _C.MODEL.TEXT.PROXY_GATE_TEMP = 1.0       # sigmoid temperature for non-top-k dims
 _C.MODEL.TEXT.PROXY_GATE_MIN = 0.0        # lower bound for non-top-k gates
