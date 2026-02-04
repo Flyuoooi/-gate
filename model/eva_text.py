@@ -897,7 +897,6 @@ class Eva(nn.Module):
                     and self.training
                     and pids is not None
                     and isinstance(self.head, nn.Linear)
-                    and (self.proxy_gate_warmup <= 0 or self.cur_epoch > self.proxy_gate_warmup)
                 ):
                     head_w = getattr(self.head, "weight", None)
                     if head_w is not None and head_w.dim() == 2:
